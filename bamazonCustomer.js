@@ -15,8 +15,8 @@ function start(){
         function(err,res){
             if(err) throw err;
             console.log("\n")
-            for (i=0; i < res.length; i++){
-                console.log("ID: " + res[i].item_id + " || Product: " + res[i].productName + " || Price: $" + res[i].price + " || Available In Stock: " + res[i].stockQuantity + "\n");
+            for (var i=0; i < res.length; i++){
+                console.log("ID: " + res[i].item_id + " || Product: " + res[i].productName + " || Price: $" + res[i].price + " || Available In Stock: " + res[i].stockQuantity + "\n-----------------------------------------------------");
             };
             inquirer.prompt([
                 {
