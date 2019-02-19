@@ -25,7 +25,7 @@ function start(){
                 lowInventory();
                 break;
             case "Add to Inventory":
-                addMore();
+                show();
                 break;
             case "Add New Product":
                 newProduct();
@@ -40,11 +40,11 @@ function start(){
 };
 
 function list(){
-    var query = "SELECT * FROM products";
+    var query = "SELECT item_id, productName, price, stockQuantity FROM products";
     connection.query(query, function(err,res){
         console.log("\n-----------------------------------------------------");
         for(var i = 0; i<res.length; i++){
-            console.log("ID: " + res[i].item_id + " || Product: " + res[i].productName + " || Department: $" + res[i].departmentName + " || Price: $" + res[i].price + " || Available In Stock: " + res[i].stockQuantity + "\n-----------------------------------------------------");
+            console.log("ID: " + res[i].item_id + " || Product: " + res[i].productName + " || Price: $" + res[i].price + " || Available In Stock: " + res[i].stockQuantity + "\n-----------------------------------------------------");
         };
         start();
     });
@@ -61,8 +61,37 @@ function lowInventory(){
     });
 };
 
+function show(){
+    var query = "SELECT item_id, productName, price, stockQuantity FROM products";
+    connection.query(query, function(err,res){
+        console.log("\n-----------------------------------------------------");
+        for(var i = 0; i<res.length; i++){
+            console.log("ID: " + res[i].item_id + " || Product: " + res[i].productName + " || Price: $" + res[i].price + " || Available In Stock: " + res[i].stockQuantity + "\n-----------------------------------------------------");
+        };
+        addMore();
+    });
+};
+
 function addMore(){
 
+    inquirer.prompt([
+        {
+            name: "id",
+            type: "input",
+            message: "What is the id of the product you want to add invontory to?"
+        },
+        {
+            name: "quantity",
+            type: "input",
+            message: "How many would you like to add?"
+        }
+    ]).then(function(answer){
+        connection.query("UPDATE products SET stockQuantity = stockQuantity + ? WHERE item_id = ?", [answer.quantity, answer.id] ,function(err, results){
+            if (err) throw err;
+            console.log("Item has been added.");
+            start();
+        });
+    });
 };
 
 function newProduct(){
