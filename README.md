@@ -37,5 +37,19 @@ When this program is started up the first thing the manager sees is a list of 5 
 
 The first option is View Products for Sale. When selected it displays all the products with id, name , price and the amount in stock. At the bottom is the same list as the first one on the screen with the manager being able to do what they want next.
 
-![Price and Option](./images/view.jpg)
+![Display Products and Options](./images/view.jpg)
+
+The next option is Veiw Inventory and selection that option displays all products with available in stock of less than 5. The original options for what to due next also display
+
+![Low product quantitiy Option](./images/low.jpg)
+
+Add to inventory is just what it says. It allows the manager to select a product and at more available in stock to that product. When selected it will display the product list and ask for the id of the product they want to ask for. Then they are asked for how many to add. Then if all went well it displays the message Item has been added, and the options list appears to do the next task.
+
+![Add to product Option](./images/add.jpg)
+
+Add a New Product allows the manager to and a new product to there invontory. They are promted to input the Name of the product, What department will it be in, What will the price be, and how many to put in the initial stock. once that is all complete and all went well a message saying Your product has been added is displayed and the options list is displayed for next thing to do.
+
+![New Product Option](./images/new.jpg)
+
+The last option is Exit and this leaves the app.
 
